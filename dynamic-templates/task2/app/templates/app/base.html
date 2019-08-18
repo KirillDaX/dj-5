@@ -1,0 +1,45 @@
+<!DOCTYPE html>{% load static %}
+{% load activeurl %}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      {% block title %}
+        text in block title
+      {% endblock %}
+    </title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="{% url 'home' %}" class="brand-logo">Компьютеры</a>
+          {% activeurl %}
+            <ul class="right hide-on-med-and-down">
+              <li><a href="{% url 'examples' %}">Примеры</a></li>
+              <li><a href="{% url 'contacts' %}">Контакты</a></li>
+              <li><a href="{% url 'about' %}">О проекте</a></li>
+            </ul>
+          {% endactiveurl %}
+        </div>
+      </nav>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+          {% block content %}
+            empty block content
+          {% endblock %}
+      </div>
+    </div>
+
+  </body>
