@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>
       {% block title %}
-        text in block title
+        Компьютеры
       {% endblock %}
     </title>
     <!--Import Google Icon Font-->
@@ -22,13 +22,14 @@
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="{% url 'home' %}" class="brand-logo">Компьютеры</a>
+
           {% activeurl %}
-            <ul class="right hide-on-med-and-down">
-              <li><a href="{% url 'examples' %}">Примеры</a></li>
-              <li><a href="{% url 'contacts' %}">Контакты</a></li>
-              <li><a href="{% url 'about' %}">О проекте</a></li>
-            </ul>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="{% url 'home' %}">Компьютеры</a></li>
+                <li><a href="{% url 'examples' %}">Примеры</a></li>
+                <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                <li><a href="{% url 'about' %}">О проекте</a></li>
+              </ul>
           {% endactiveurl %}
         </div>
       </nav>

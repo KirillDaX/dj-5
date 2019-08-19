@@ -72,7 +72,7 @@ def format_num_comments(value):
 
 
 @register.filter
-def format_selftext(value):
+def format_selftext(value, count):
     """
     Оставляет count первых и count последних слов, между ними должно быть троеточие.
     count задается параметром фильтра.
@@ -80,16 +80,19 @@ def format_selftext(value):
     :param value, count
     :return: msg_selftext
     """
-    count = 10
     msg_selftext = value.split()
     all_out_str = ''
+    if value:
+        if count*2 < len(msg_selftext):
+            for item in msg_selftext[0:count]:
+                all_out_str += item + ' '
 
-    for item in msg_selftext[0:count]:
-        all_out_str += item + ' '
+            all_out_str = all_out_str + '...'
 
-    all_out_str = all_out_str + '...'
-
-    for item in msg_selftext[-count:-1]:
-        all_out_str += item + ' '
-
+            for item in msg_selftext[-count:]:
+                all_out_str += item + ' '
+        else:
+            all_out_str = value
+    else:
+        all_out_str = '[empty message]'
     return all_out_str
