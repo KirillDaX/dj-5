@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+</head>
+<body>
+{% block content %}
+<div class="card">
+<div class="card-body">
+<h4 class="card-title">Страница авторизации</h4>
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="ok">
+    </form>
+    <a href="{% url 'password_reset' %}">Сброс пароля</a>
+{% endblock %}
+</div>
+</div>
+</body>
+</html>

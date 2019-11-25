@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Заголовок статьи{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1><a href="{% url 'articles_url' %}"> Список статей</a></h1>
+            <h3>{{ article }}</h3>
+            {% if article.article_free %}
+                {% if request.user.paid_content %}
+                    <p>Эта статья с article_free=True</p>
+                    <p>{{ article.article_text }}</p>
+                {% else %}
+                    <p>У вас нет права просмотра</p>
+                    <p><a href="{% url 'get_paid' %}">Получать тут</a></p>
+                {% endif %}
+            {% else %}
+            <p>Эта статья с article_free=False</p>
+                <p>{{ article.article_text }}</p>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

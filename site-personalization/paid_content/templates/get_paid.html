@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}оплата{% endblock %}
+
+{% block content %}
+Псевдо оплата
+<p>текущий статус paid_content авторизованного пользователя: <strong>{{ status }}</strong></p>
+<form action="{% url 'get_paid' %}" method="POST">
+    {% csrf_token %}
+    <label for="get_paid">Провести оплату: </label>
+    <input type="submit" value="Изменить">
+</form>
+<p><a href="{% url 'articles_url' %}">назад к списку статей</a> </p>
+{% endblock %}

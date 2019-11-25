@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+    <br>
+    <p>Привет: {{ user.get_username }} !</p>
+    <p><a href="/signup">зарегистрировать нового пользователя</a></p>
+    <p><a href="/login">Войти под другим пользователем</a></p>
+    <p><a href="{% url 'logout'%}?next={{request.path}}">Выйти</a></p>
+</div>
+{% else %}
+<div class="container">
+    <br>
+    Привет, <b>Гость</b>.<br>
+    Пожалуйста, <a href="/signup">зарегистрируйся</a> или <a href="/login">авторизуйся</a>!
+</div>
+{% endif %}
+
+{% endblock %}

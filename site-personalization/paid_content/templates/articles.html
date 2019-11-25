@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Журнал{% endblock %}
+
+{% block content %}
+<p>текущий статус paid_content пользователя: <strong>{{ status }}</strong></p>
+<p><a href="{% url 'get_paid' %}">Изменить...</a> </p>
+    <div class="container">
+        <div class="header">
+            <h1>Список статей</h1>
+        </div>
+        <div class="articles">
+            {% for article in articles %}
+            <h3><a href="{% url 'article_url' id=article.id%}"> {{ article }}</a></h3>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
